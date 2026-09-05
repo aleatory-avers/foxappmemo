@@ -23,7 +23,9 @@ object DatabaseModule {
             context,
             AppDatabase::class.java,
             "foxappmemo.db",
-        ).build()
+        )
+            .addMigrations(*AppDatabase.ALL_MIGRATIONS)
+            .build()
 
     @Provides
     fun provideAppDao(db: AppDatabase): AppDao = db.appDao()
